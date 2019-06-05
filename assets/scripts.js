@@ -1,5 +1,5 @@
 
 setTimeout(() => {
-    window.location.replace(window.location.href + "home");
+    window.location.assign(window.location.href + "home");
 }, 5000);
 

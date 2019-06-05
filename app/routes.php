@@ -24,12 +24,12 @@ $app
         {
             // Fetch promotions
             $query = $this->db->query('SELECT * FROM article ORDER BY `article`.`date` DESC');
-            $articles = $query->fetchAll();
-
+            $article = $query->fetchAll();
+            
             // View data
             $viewData = [];
-            $viewData['articles'] = $articles;
-
+            $viewData['articles'] = $article;
+            
             return $this->view->render($response, 'pages/home.twig', $viewData);
         }
     )
@@ -71,7 +71,7 @@ $app
     ->setName('random_article')
     ;
 
-// articles 
+// article 
 
 $app
     ->get(

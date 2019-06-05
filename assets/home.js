@@ -1,7 +1,7 @@
 const project_container = document.querySelector('.articles__container')
 const projects = document.querySelectorAll('.article__container')
 const scroll__bar = document.querySelector('.scroll__bar')
-
+const article_transition = document.querySelector('.article__transition')
 
 
 /**
@@ -79,12 +79,17 @@ function onMouseWheel( event ) {
     
 }
 
+console.log('hello');
+
 //click
 
 for (let index = 0; index < projects.length; index++) {
     projects[index].addEventListener('click',()=>{
-        console.log(projects[index].dataset.slug);
-        window.location.replace(window.location.href + "article/" + projects[index].dataset.slug);
+        article_transition.style.display = 'block'
+        setTimeout(() => {
+            window.location.assign( "article/" + projects[index].dataset.slug);
+        }, 1000);
+        
     })
     
 }
