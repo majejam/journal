@@ -1,0 +1,10 @@
+{% include 'partials/header.twig' %}
+
+
+<div class="article__single__container">
+    <div class="article__single__title article__move"><span class="article__title">{{article.title}}</span></div>
+    <div class="article__single__image"><img src="../{{article.article_image}}" alt="{{article.slug}}"></div>
+    <div class="article__single__text article__move"><span class="article__description">{{article.article_text|raw}}</span></div>
+</div>
+<div class="scroll__bar"></div>
+<script src="{{ base_url() }}/../assets/article.js"></script>
