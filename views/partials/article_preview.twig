@@ -1,12 +1,11 @@
 {% for _article in articles %}
-    <div class="article__container">
+    <div class="article__container" data-slug="{{_article.slug}}">
         <div class="article__image">
             <img src="{{_article.article_image}}" alt="">
         </div>
         <a href="{{ path_for('article', { slug: _article.slug }) }}" class="article__text">
             <span class="article__title">{{_article.title}}</span>
             <span class="article__description">{{_article.description}}</span>
-
         </a>
     </div>
     

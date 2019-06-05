@@ -78,3 +78,13 @@ function onMouseWheel( event ) {
 	}, 66);
     
 }
+
+//click
+
+for (let index = 0; index < projects.length; index++) {
+    projects[index].addEventListener('click',()=>{
+        console.log(projects[index].dataset.slug);
+        window.location.replace(window.location.href + "article/" + projects[index].dataset.slug);
+    })
+    
+}

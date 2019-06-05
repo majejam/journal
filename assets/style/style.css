@@ -170,11 +170,12 @@ body{
 .article__image{
   width: 40%;
   height: 250px;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
 }
 .article__image img{
-  width: 100%;
-  object-fit: cover;
+  height: 100%;
 }
 .scroll__bar{
   position: fixed;
