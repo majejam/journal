@@ -1,5 +1,5 @@
 
 setTimeout(() => {
-    window.location.replace("http://localhost/journal/web/home");
+    window.location.replace(window.location.href + "home");
 }, 5000);
 

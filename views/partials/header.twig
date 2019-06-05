@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="{{ base_url() }}/../images/book.png" />
+    <link rel="icon" type="image/png" href="{{ base_url() }}/images/book.png" />
     <title>{{title is empty ? 'Journal.' : title}}</title>
-    <link rel="stylesheet" href="{{ base_url() }}/../assets/style/style.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/style/style.css">
 </head>
 <body>
     <div class="header__container">
@@ -16,7 +16,7 @@
             </h1>
         </div>
         <div class="header__container--small">
-            <a class="header__title" href="{{ path_for('home') }}">Random</a>
+            <a class="header__title" href="{{ path_for('random_article') }}">Random</a>
         </div>
         <div class="header__container--small">
             <a class="header__title" href="{{ path_for('about') }}">About</a>

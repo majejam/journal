@@ -218,6 +218,30 @@ body{
   width: 50%;
   margin-bottom: 400px;
 }
+.article__single__text img{
+  width: 100%;
+}
+.title{
+  font-family: 'CircularStd-bold';
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+.intro__loader{
+  height: 1px;
+  background: black;
+  width: 100%;
+  animation: scale 4s linear 0s 1 forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+@keyframes scale {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 @keyframes slideOut {
   0% {
     transform: matrix(1, 0, 0, 1, 0, 1) translateX(100%);

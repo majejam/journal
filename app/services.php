@@ -5,7 +5,7 @@ $container = $app->getContainer();
 // View with Twig
 $container['view'] = function($container)
 {
-    $view = new \Slim\Views\Twig('../views');
+    $view = new \Slim\Views\Twig('./views');
 
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));

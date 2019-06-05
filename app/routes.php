@@ -23,7 +23,7 @@ $app
         function($request, $response)
         {
             // Fetch promotions
-            $query = $this->db->query('SELECT * FROM article');
+            $query = $this->db->query('SELECT * FROM article ORDER BY `article`.`date` DESC');
             $articles = $query->fetchAll();
 
             // View data
@@ -50,6 +50,26 @@ $app
     ->setName('about')
 ;
 
+//Random article
+
+$app
+    ->get(
+        '/article/random',
+        function($request, $response)
+        {
+            // Fetch random student
+            $query = $this->db->query('SELECT * FROM article ORDER BY RAND() LIMIT 1');
+            $article = $query->fetch();
+        
+            // Generate url
+            $url = $this->router->pathFor('article', [ 'slug' =>  $article->slug]);
+
+            // Return response with redirection
+            return $response->withRedirect($url);
+        }
+    )
+    ->setName('random_article')
+    ;
 
 // articles 
 
@@ -76,3 +96,5 @@ $app
     )
     ->setName('article')
 ;
+
+
