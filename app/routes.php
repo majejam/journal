@@ -23,7 +23,7 @@ $app
         function($request, $response)
         {
             // Fetch promotions
-            $query = $this->db->query('SELECT * FROM article ORDER BY `article`.`date` DESC');
+            $query = $this->db->query('SELECT * FROM articles ORDER BY `articles`.`date` DESC');
             $article = $query->fetchAll();
             
             // View data
@@ -57,8 +57,8 @@ $app
         '/article/random',
         function($request, $response)
         {
-            // Fetch random student
-            $query = $this->db->query('SELECT * FROM article ORDER BY RAND() LIMIT 1');
+            // Fetch random article
+            $query = $this->db->query('SELECT * FROM articles ORDER BY RAND() LIMIT 1');
             $article = $query->fetch();
         
             // Generate url
@@ -80,7 +80,7 @@ $app
         {
             // Fetch article
             $prepare = $this->db->prepare(
-                'SELECT * FROM article WHERE slug = :slug LIMIT 1'
+                'SELECT * FROM articles WHERE slug = :slug LIMIT 1'
             );
             $prepare->bindValue('slug', $arguments['slug']);
             $prepare->execute();
@@ -88,9 +88,20 @@ $app
             if(!$article){
                 throw new \Slim\Exception\NotFoundException($request, $response);
             }
+
+            // Fetch random article
+            $prepare = $this->db->prepare('SELECT * FROM articles WHERE slug != :slug ORDER BY RAND() LIMIT 1');
+            $prepare->bindValue('slug', $arguments['slug']);
+            $prepare->execute();
+            $article_new = $prepare->fetch();
+        
+            // Generate url
+            $url = $article_new->slug;
         
             $viewData = [];
             $viewData['article'] = $article;
+            $viewData['article_url'] = $url;
+            $viewData['article_new'] = $article_new;
             return $this->view->render($response, 'pages/article.twig', $viewData);
         }
     )

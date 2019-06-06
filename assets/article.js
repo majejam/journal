@@ -1,8 +1,8 @@
 const project_container = document.querySelector('.article__single__container')
 const projects = document.querySelectorAll('.article__move')
 const scroll__bar = document.querySelector('.scroll__bar')
-
-
+const article_transition = document.querySelector('.article__transition')
+const new_article = document.querySelectorAll('.article__suggestion__card')
 
 /**
  * Sizes
@@ -13,7 +13,18 @@ sizes.height = window.innerHeight
 
 // Scroll bar height 
 let ratio = project_container.offsetHeight/sizes.height
+let isScrollable = false
 scroll__bar.style.height = `${100/(ratio)}%`
+
+if(sizes.height < project_container.offsetHeight && sizes.width >= 600){
+    isScrollable = true
+    scroll__bar.style.display ='block'
+}
+else{
+    isScrollable = false 
+    scroll__bar.style.display ='none'
+}   
+
 /**
  * Resize
  */
@@ -22,6 +33,15 @@ window.addEventListener('resize', () =>
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
+
+    if(sizes.height < project_container.offsetHeight && sizes.width >= 600){
+        isScrollable = true
+        scroll__bar.style.display ='block'
+    }
+    else{
+        isScrollable = false 
+        scroll__bar.style.display ='none'
+    }   
 
     // Scroll bar height 
     ratio = project_container.offsetHeight/sizes.height
@@ -114,4 +134,15 @@ project_container.style.transform = `translateY(${position_container}px)`
 
 return offset;
 
+}
+
+for (let index = 0; index < new_article.length; index++) {
+    new_article[index].addEventListener('click',()=>{
+        article_transition.style.display = 'block'
+        setTimeout(() => {
+            window.location.assign(new_article[index].dataset.slug);
+        }, 1000);
+        
+    })
+    
 }

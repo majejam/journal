@@ -1,12 +1,23 @@
 {% include 'partials/header.twig' %}
 
-
-<div class="article__single__container">
-    <div class="article__single__title article__move"><span class="article__title">{{article.title}}</span></div>
-    <div class="article__single__image"><img src="../{{article.article_image}}" alt="{{article.slug}}"></div>
-    <div class="article__single__text article__move"><span class="article__description">{{article.article_text|raw}}</span></div>
+<div class="article__transition">
 </div>
 <div class="scroll__bar"></div>
 <div class="home__transition">
 </div>
+<div class="article__single__container">
+    <div class="article__single__title article__move"><h2 class="article__title">{{article.title}}</h2></div>
+    <div class="article__single__image"><img src="../{{article.article_image}}" alt="{{article.slug}}"></div>
+    <div class="article__single__text article__move">
+    <p class="article__description">{{article.article_text|raw}}</p>
+        <div class="article__suggestion">
+            <span class="article__suggestion__title">You might also want to read </span>
+            <div class="article__suggestion__card" data-slug="{{article_url}}">
+                <img class="article__suggestion__image" src="../{{article_new.article_image}}" alt="{{article_new.slug}}">
+                <span class="title">{{article_new.title}}</span>
+            </div>
+       </div>
+    </div>
+</div>
+
 <script src="{{ base_url() }}/assets/article.js"></script>
